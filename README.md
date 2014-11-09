@@ -25,9 +25,9 @@ Works like VerticalLayout but takes the Screen Width.
 Subviews layed out horizontally. Eack subview layed out relative to the top right of the previous subview.
 
     init(height: CGFloat)
-    
+
 #### HorizontalFitLayout
-One of the subviews is expanded to the rest of the parents height. This subview must be initialised with width zero.
+One of the subviews is expanded to the rest of the parents width. This subview must be initialised with width zero.
 
     init(height: CGFloat)
 
