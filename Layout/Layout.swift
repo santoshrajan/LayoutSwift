@@ -57,6 +57,45 @@ class HorizontalLayout: UIView {
 }
 
 
+
+class HorizontalFitLayout: HorizontalLayout {
+    
+    
+    override init(height: CGFloat) {
+        super.init(height: height)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        
+        var width: CGFloat = 0
+        var zeroWidthView: UIView?
+        
+        for i in 0..<subviews.count {
+            var view = subviews[i] as UIView
+            width += xOffsets[i]
+            if view.frame.width == 0 {
+                zeroWidthView = view
+            } else {
+                width += view.frame.width
+            }
+        }
+        
+        if width < superview!.frame.width && zeroWidthView != nil {
+            zeroWidthView!.frame.size.width = superview!.frame.width - width
+        }
+        
+        super.layoutSubviews()
+        
+    }
+    
+}
+
+
+
 class VerticalLayout: UIView {
     
     var yOffsets: [CGFloat] = []
